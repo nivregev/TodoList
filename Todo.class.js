@@ -2,12 +2,12 @@ class Todo {
   currentId = 0;
 
   todos = [];
-
+  /* 
   constructor() {
     this.load();
-  }
+  } */
 
-  save() {
+  /*   save() {
     localStorage.setItem("todos", JSON.stringify(this.todos));
     localStorage.setItem("currentId", this.currentId);
   }
@@ -17,7 +17,7 @@ class Todo {
       this.todos = JSON.parse(localStorage.getItem("todos"));
       this.currentId = Number(localStorage.getItem(`currentId`));
     }
-  }
+  } */
 
   add(text) {
     if (typeof text !== "string" || text.length < 2) {
@@ -32,7 +32,7 @@ class Todo {
       createdAt: new Date(),
     };
     this.todos.push(todo);
-    this.save();
+    /* this.save(); */
     return todo;
   }
 
@@ -47,23 +47,22 @@ class Todo {
   }
 
   getTodos() {
+    /* this.save(); */
     return this.todos;
   }
 
   remove(id) {
     const todo = this.getTodo(id);
-
     const indexToRemove = this.todos.indexOf(todo);
     const removeElement = this.todos.splice(indexToRemove, 1);
-    this.save();
+    /* this.save(); */
     return removeElement[0];
   }
 
   ChangeDone(id, isDone = null) {
     const todo = this.getTodo(id);
-
     todo.isDone = typeof isDone === "boolean" ? isDone : !todo.isDone;
-    this.save();
+    /*  this.save(); */
     return todo;
   }
 }
